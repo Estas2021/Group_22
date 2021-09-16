@@ -1,0 +1,172 @@
+{
+	"id": "7263a3e7-2e5e-4fc1-9105-36874cbb45cc",
+	"name": "HW1_POSTMAN",
+	"timestamp": "2021-09-15T18:40:17.519Z",
+	"collection_id": "14605739-e03695ed-f7f1-4101-a67d-7dbd635d17f7",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "675462e0-dc11-49da-ada2-ad7817b28c50",
+			"name": "New Request",
+			"url": "http://162.55.220.72:5005/get_method?name=str&age=int",
+			"time": 156,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				156
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eec63a02-7dc9-415b-ae78-2fab3f88b9bf",
+			"name": "request form data",
+			"url": "http://162.55.220.72:5005/user_info_3",
+			"time": 172,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				172
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "526c8279-3a30-4966-88c0-caa6d79f986f",
+			"name": "request url params",
+			"url": "http://162.55.220.72:5005/object_info_1?name=%D0%B2%D0%B0%D1%81%D0%B5%D0%BA&age=13&weight=65",
+			"time": 153,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				153
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e454cfea-065e-4969-99f3-77cb7c132c12",
+			"name": "New Request",
+			"url": "http://162.55.220.72:5005/object_info_2?name=%D0%B2%D0%B0%D1%81%D1%8F&age=22&salary=25",
+			"time": 159,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				159
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a6f0c34f-07b6-405d-9974-e696614b0e05",
+			"name": "New Request",
+			"url": "http://162.55.220.72:5005/object_info_3?name=%D0%B2%D0%B0%D1%80%D1%8F&age=23&salary=26",
+			"time": 150,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				150
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2641cf74-07ae-4f95-b029-228da421fdb0",
+			"name": "New Request",
+			"url": "http://162.55.220.72:5005/object_info_4?name=%D0%BD%D0%B5%D0%BA%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C&age=105&salary=2",
+			"time": 160,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				160
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f76b2c6b-ae2f-403b-a5c8-26c3caf408ff",
+			"name": "New Request",
+			"url": "http://162.55.220.72:5005/user_info_2",
+			"time": 146,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				146
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1096,
+	"collection": {
+		"requests": [
+			{
+				"id": "675462e0-dc11-49da-ada2-ad7817b28c50",
+				"method": "GET"
+			},
+			{
+				"id": "eec63a02-7dc9-415b-ae78-2fab3f88b9bf",
+				"method": "POST"
+			},
+			{
+				"id": "526c8279-3a30-4966-88c0-caa6d79f986f",
+				"method": "GET"
+			},
+			{
+				"id": "e454cfea-065e-4969-99f3-77cb7c132c12",
+				"method": "GET"
+			},
+			{
+				"id": "a6f0c34f-07b6-405d-9974-e696614b0e05",
+				"method": "GET"
+			},
+			{
+				"id": "2641cf74-07ae-4f95-b029-228da421fdb0",
+				"method": "GET"
+			},
+			{
+				"id": "f76b2c6b-ae2f-403b-a5c8-26c3caf408ff",
+				"method": "POST"
+			}
+		]
+	}
+}
