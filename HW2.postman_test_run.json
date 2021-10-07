@@ -1,1434 +1,1020 @@
 {
-	"id": "f3080d8c-b32a-4a75-ba81-f606e3d5854b",
-	"name": "HW2",
-	"timestamp": "2021-09-27T20:13:25.000Z",
-	"collection_id": "14605739-d21d1e7b-2d13-4b25-9745-56f8459c9624",
-	"folder_id": 0,
-	"environment_id": "14605739-764629f3-a981-4a9d-a13c-1d64f796569f",
-	"totalPass": 630,
-	"totalFail": 0,
-	"results": [
+	"info": {
+		"_postman_id": "d21d1e7b-2d13-4b25-9745-56f8459c9624",
+		"name": "HW2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "a121bc7a-8fff-44aa-ae66-3a8eff363573",
 			"name": "Login",
-			"time": 133,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				148,
-				137,
-				136,
-				135,
-				138,
-				132,
-				133,
-				134,
-				137,
-				136,
-				134,
-				134,
-				142,
-				140,
-				141,
-				136,
-				137,
-				138,
-				146,
-				134,
-				144,
-				132,
-				135,
-				138,
-				135,
-				137,
-				140,
-				136,
-				148,
-				133
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"pm.environment.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
 			],
-			"allTests": [
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{}
-			]
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Stas",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "lobby",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}login",
+					"host": [
+						"{{url}}login"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "3f782605-5e57-49ca-8874-111f31e7a511",
 			"name": "User_info",
-			"time": 139,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Check status code is 200": true,
-				"Schema is valid": true,
-				"Check_salary": true,
-				"Check_salary6": true,
-				"Check_salary12": true,
-				"Check_salary1_5_year": true
-			},
-			"testPassFailCounts": {
-				"Check status code is 200": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Schema is valid": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary6": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary12": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary1_5_year": {
-					"pass": 30,
-					"fail": 0
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"person\": {\r",
+							"                \"u_age\": 29,\r",
+							"                \"u_name\": [\r",
+							"                    \"Stas\",\r",
+							"                    500,\r",
+							"                    29\r",
+							"                ],\r",
+							"                \"u_salary_1_5_year\": 2000\r",
+							"            },\r",
+							"            \"qa_salary_after_12_months\": 1450.0,\r",
+							"            \"qa_salary_after_6_months\": 1000,\r",
+							"            \"start_qa_salary\": 500\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"person\",\r",
+							"        \"qa_salary_after_12_months\",\r",
+							"        \"qa_salary_after_6_months\",\r",
+							"        \"start_qa_salary\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"person\": {\r",
+							"            \"$id\": \"#/properties/person\",\r",
+							"            \"type\": \"object\",\r",
+							"            \"title\": \"The person schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": {},\r",
+							"            \"examples\": [\r",
+							"                {\r",
+							"                    \"u_age\": 29,\r",
+							"                    \"u_name\": [\r",
+							"                        \"Stas\",\r",
+							"                        500,\r",
+							"                        29\r",
+							"                    ],\r",
+							"                    \"u_salary_1_5_year\": 2000\r",
+							"                }\r",
+							"            ],\r",
+							"            \"required\": [\r",
+							"                \"u_age\",\r",
+							"                \"u_name\",\r",
+							"                \"u_salary_1_5_year\"\r",
+							"            ],\r",
+							"            \"properties\": {\r",
+							"                \"u_age\": {\r",
+							"                    \"$id\": \"#/properties/person/properties/u_age\",\r",
+							"                    \"type\": \"integer\",\r",
+							"                    \"title\": \"The u_age schema\",\r",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                    \"default\": 0,\r",
+							"                    \"examples\": [\r",
+							"                        29\r",
+							"                    ]\r",
+							"                },\r",
+							"                \"u_name\": {\r",
+							"                    \"$id\": \"#/properties/person/properties/u_name\",\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"title\": \"The u_name schema\",\r",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                    \"default\": [],\r",
+							"                    \"examples\": [\r",
+							"                        [\r",
+							"                            \"Stas\",\r",
+							"                            500\r",
+							"                        ]\r",
+							"                    ],\r",
+							"                    \"additionalItems\": true,\r",
+							"                    \"items\": {\r",
+							"                        \"$id\": \"#/properties/person/properties/u_name/items\",\r",
+							"                        \"anyOf\": [\r",
+							"                            {\r",
+							"                                \"$id\": \"#/properties/person/properties/u_name/items/anyOf/0\",\r",
+							"                                \"type\": \"string\",\r",
+							"                                \"title\": \"The first anyOf schema\",\r",
+							"                                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                \"default\": \"\",\r",
+							"                                \"examples\": [\r",
+							"                                    \"Stas\"\r",
+							"                                ]\r",
+							"                            },\r",
+							"                            {\r",
+							"                                \"$id\": \"#/properties/person/properties/u_name/items/anyOf/1\",\r",
+							"                                \"type\": \"integer\",\r",
+							"                                \"title\": \"The second anyOf schema\",\r",
+							"                                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                \"default\": 0,\r",
+							"                                \"examples\": [\r",
+							"                                    500,\r",
+							"                                    29\r",
+							"                                ]\r",
+							"                            }\r",
+							"                        ]\r",
+							"                    }\r",
+							"                },\r",
+							"                \"u_salary_1_5_year\": {\r",
+							"                    \"$id\": \"#/properties/person/properties/u_salary_1_5_year\",\r",
+							"                    \"type\": \"integer\",\r",
+							"                    \"title\": \"The u_salary_1_5_year schema\",\r",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                    \"default\": 0,\r",
+							"                    \"examples\": [\r",
+							"                        2000\r",
+							"                    ]\r",
+							"                }\r",
+							"            },\r",
+							"            \"additionalProperties\": true\r",
+							"        },\r",
+							"        \"qa_salary_after_12_months\": {\r",
+							"            \"$id\": \"#/properties/qa_salary_after_12_months\",\r",
+							"            \"type\": \"number\",\r",
+							"            \"title\": \"The qa_salary_after_12_months schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0.0,\r",
+							"            \"examples\": [\r",
+							"                1450.0\r",
+							"            ]\r",
+							"        },\r",
+							"        \"qa_salary_after_6_months\": {\r",
+							"            \"$id\": \"#/properties/qa_salary_after_6_months\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The qa_salary_after_6_months schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                1000\r",
+							"            ]\r",
+							"        },\r",
+							"        \"start_qa_salary\": {\r",
+							"            \"$id\": \"#/properties/start_qa_salary\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The start_qa_salary schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                500\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"};\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"\r",
+							"let start_qa_salary = JSON.parse(request.data).salary;\r",
+							"let salary = start_qa_salary;\r",
+							"let salary6 = jsonData.qa_salary_after_6_months;\r",
+							"let salary12 = jsonData.qa_salary_after_12_months;\r",
+							"let salary1_5_year = jsonData.person.u_salary_1_5_year;\r",
+							"\r",
+							"pm.test(\"Check_salary\", function () {\r",
+							"    pm.expect(salary).to.eql(start_qa_salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary6\", function () {\r",
+							"    pm.expect(salary6).to.eql(salary * 2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary12\", function () {\r",
+							"    pm.expect(salary12).to.eql(salary * 2.9);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary1_5_year\", function () {\r",
+							"    pm.expect(salary1_5_year).to.eql(salary * 4);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"u_salary_1_5_year\", jsonData.person.u_salary_1_5_year)"
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"times": [
-				138,
-				152,
-				135,
-				145,
-				131,
-				132,
-				145,
-				133,
-				133,
-				135,
-				132,
-				134,
-				132,
-				134,
-				148,
-				139,
-				133,
-				138,
-				133,
-				145,
-				131,
-				136,
-				140,
-				136,
-				136,
-				141,
-				140,
-				134,
-				131,
-				139
 			],
-			"allTests": [
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\": {{age}},\r\n    \"salary\": {{salary}},\r\n    \"name\": \"{{name}}\",\r\n    \"auth_token\": \"{{token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
-				},
-				{
-					"Check status code is 200": true,
-					"Schema is valid": true,
-					"Check_salary": true,
-					"Check_salary6": true,
-					"Check_salary12": true,
-					"Check_salary1_5_year": true
+				"url": {
+					"raw": "{{url}}user_info",
+					"host": [
+						"{{url}}user_info"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"id": "f10584d9-43be-414c-83dc-58dfab873118",
 			"name": "New_data",
-			"time": 650,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Check status code is 200": true,
-				"Check schema is valid": true,
-				"Check_salary": true,
-				"Check_salary_2": true,
-				"Check_salary_3": true,
-				"Check_salary_3 > salary_2": true,
-				"Check_salary_3 > salary": true
-			},
-			"testPassFailCounts": {
-				"Check status code is 200": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check schema is valid": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary_2": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary_3": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary_3 > salary_2": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_salary_3 > salary": {
-					"pass": 30,
-					"fail": 0
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"age\": 29,\r",
+							"            \"name\": \"Stas\",\r",
+							"            \"salary\": [\r",
+							"                500,\r",
+							"                \"1000\",\r",
+							"                \"1500\"\r",
+							"            ]\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"age\",\r",
+							"        \"name\",\r",
+							"        \"salary\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"age\": {\r",
+							"            \"$id\": \"#/properties/age\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The age schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                29\r",
+							"            ]\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"            \"$id\": \"#/properties/name\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The name schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Stas\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"salary\": {\r",
+							"            \"$id\": \"#/properties/salary\",\r",
+							"            \"type\": \"array\",\r",
+							"            \"title\": \"The salary schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": [],\r",
+							"            \"examples\": [\r",
+							"                [\r",
+							"                    500,\r",
+							"                    \"1000\"\r",
+							"                ]\r",
+							"            ],\r",
+							"            \"additionalItems\": true,\r",
+							"            \"items\": {\r",
+							"                \"$id\": \"#/properties/salary/items\",\r",
+							"                \"anyOf\": [\r",
+							"                    {\r",
+							"                        \"$id\": \"#/properties/salary/items/anyOf/0\",\r",
+							"                        \"type\": \"integer\",\r",
+							"                        \"title\": \"The first anyOf schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": 0,\r",
+							"                        \"examples\": [\r",
+							"                            500\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    {\r",
+							"                        \"$id\": \"#/properties/salary/items/anyOf/1\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The second anyOf schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"1000\",\r",
+							"                            \"1500\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                ]\r",
+							"            }\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"};\r",
+							"\r",
+							"pm.test('Check schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let salary = jsonData.salary[0]\r",
+							"let salary_2 = +jsonData.salary[1]                      // '+' means parseInt\r",
+							"let salary_3 = +jsonData.salary[2]                      // '+' means parseInt\r",
+							"\r",
+							"pm.test(\"Check_salary\", function () {\r",
+							"    pm.expect(salary).to.eql(salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary_2\", function () {\r",
+							"    pm.expect(salary_2).to.eql(salary * 2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary_3\", function () {\r",
+							"    pm.expect(salary_3).to.eql(salary * 3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary_3 > salary_2\", function () {\r",
+							"    pm.expect(salary_3).to.greaterThan(salary_2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_salary_3 > salary\", function () {\r",
+							"    pm.expect(salary_3).to.greaterThan(salary);\r",
+							"});\r",
+							"// console.log(\"salary =\", salary, typeof(salary));\r",
+							"// console.log(\"salary =\", salary_2, typeof(salary_2));\r",
+							"// console.log(\"salary =\", salary_3, typeof(salary_3));"
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"times": [
-				139,
-				146,
-				143,
-				148,
-				135,
-				135,
-				149,
-				156,
-				144,
-				138,
-				164,
-				136,
-				163,
-				150,
-				136,
-				138,
-				135,
-				138,
-				133,
-				139,
-				144,
-				133,
-				136,
-				135,
-				139,
-				138,
-				135,
-				136,
-				137,
-				650
 			],
-			"allTests": [
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
 				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
-				},
-				{
-					"Check status code is 200": true,
-					"Check schema is valid": true,
-					"Check_salary": true,
-					"Check_salary_2": true,
-					"Check_salary_3": true,
-					"Check_salary_3 > salary_2": true,
-					"Check_salary_3 > salary": true
+				"url": {
+					"raw": "{{url}}new_data",
+					"host": [
+						"{{url}}new_data"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"id": "e6a7a5be-49f2-4c2f-b00b-92c2cbfedbcb",
 			"name": "Test_pet_info",
-			"time": 136,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Schema is valid": true,
-				"Check_daily_food": true,
-				"Check_weight2_5": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Schema is valid": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_daily_food": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check_weight2_5": {
-					"pass": 30,
-					"fail": 0
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// console.log(\"salary =\", salary, typeof(salary));\r",
+							"// console.log(\"salary =\", salary_2, typeof(salary_2));\r",
+							"// console.log(\"salary =\", salary_3, typeof(salary_3));\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"age\": 29,\r",
+							"            \"daily_food\": 0.9,\r",
+							"            \"daily_sleep\": 187.5,\r",
+							"            \"name\": \"Stas\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"age\",\r",
+							"        \"daily_food\",\r",
+							"        \"daily_sleep\",\r",
+							"        \"name\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"age\": {\r",
+							"            \"$id\": \"#/properties/age\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The age schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                29\r",
+							"            ]\r",
+							"        },\r",
+							"        \"daily_food\": {\r",
+							"            \"$id\": \"#/properties/daily_food\",\r",
+							"            \"type\": \"number\",\r",
+							"            \"title\": \"The daily_food schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0.0,\r",
+							"            \"examples\": [\r",
+							"                0.9\r",
+							"            ]\r",
+							"        },\r",
+							"        \"daily_sleep\": {\r",
+							"            \"$id\": \"#/properties/daily_sleep\",\r",
+							"            \"type\": \"number\",\r",
+							"            \"title\": \"The daily_sleep schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0.0,\r",
+							"            \"examples\": [\r",
+							"                187.5\r",
+							"            ]\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"            \"$id\": \"#/properties/name\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The name schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Stas\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"};\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"// В ответе указаны коэффициенты умножения weight, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"\r",
+							"let weight_request = request.data.weight;\r",
+							"let daily_food = weight_request * 0.012\r",
+							"let daily_sleep = weight_request * 2.5;\r",
+							"//console.log(daily_sleep);\r",
+							"\r",
+							"pm.test(\"Check_daily_food\", function () {\r",
+							"    pm.expect(daily_food).to.eql(weight_request * 0.012);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check_weight2_5\", function () {\r",
+							"    pm.expect(daily_sleep).to.eql(weight_request * 2.5);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"times": [
-				139,
-				144,
-				145,
-				144,
-				155,
-				140,
-				148,
-				147,
-				140,
-				141,
-				131,
-				132,
-				135,
-				131,
-				138,
-				137,
-				142,
-				140,
-				138,
-				137,
-				137,
-				135,
-				133,
-				135,
-				134,
-				131,
-				138,
-				132,
-				143,
-				136
 			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "{{weight}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
 				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check_daily_food": true,
-					"Check_weight2_5": true
+				"url": {
+					"raw": "{{url}}test_pet_info",
+					"host": [
+						"{{url}}test_pet_info"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"id": "ef0c4a90-e1a8-4fe4-ad95-b0e5babf7f62",
 			"name": "Get_test_user",
-			"time": 135,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Schema is valid": true,
-				"Check name_fd = name_env": true,
-				"Check age_request = age_response": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Schema is valid": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check name_fd = name_env": {
-					"pass": 30,
-					"fail": 0
-				},
-				"Check age_request = age_response": {
-					"pass": 30,
-					"fail": 0
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"age\": \"29\",\r",
+							"            \"family\": {\r",
+							"                \"children\": [\r",
+							"                    [\r",
+							"                        \"Alex\",\r",
+							"                        24\r",
+							"                    ],\r",
+							"                    [\r",
+							"                        \"Kate\",\r",
+							"                        12\r",
+							"                    ]\r",
+							"                ],\r",
+							"                \"u_salary_1_5_year\": 8000\r",
+							"            },\r",
+							"            \"name\": \"Stas\",\r",
+							"            \"salary\": 2000\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"age\",\r",
+							"        \"family\",\r",
+							"        \"name\",\r",
+							"        \"salary\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"age\": {\r",
+							"            \"$id\": \"#/properties/age\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The age schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"29\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"family\": {\r",
+							"            \"$id\": \"#/properties/family\",\r",
+							"            \"type\": \"object\",\r",
+							"            \"title\": \"The family schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": {},\r",
+							"            \"examples\": [\r",
+							"                {\r",
+							"                    \"children\": [\r",
+							"                        [\r",
+							"                            \"Alex\",\r",
+							"                            24\r",
+							"                        ],\r",
+							"                        [\r",
+							"                            \"Kate\",\r",
+							"                            12\r",
+							"                        ]\r",
+							"                    ],\r",
+							"                    \"u_salary_1_5_year\": 8000\r",
+							"                }\r",
+							"            ],\r",
+							"            \"required\": [\r",
+							"                \"children\",\r",
+							"                \"u_salary_1_5_year\"\r",
+							"            ],\r",
+							"            \"properties\": {\r",
+							"                \"children\": {\r",
+							"                    \"$id\": \"#/properties/family/properties/children\",\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"title\": \"The children schema\",\r",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                    \"default\": [],\r",
+							"                    \"examples\": [\r",
+							"                        [\r",
+							"                            [\r",
+							"                                \"Alex\",\r",
+							"                                24\r",
+							"                            ],\r",
+							"                            [\r",
+							"                                \"Kate\",\r",
+							"                                12\r",
+							"                            ]\r",
+							"                        ]\r",
+							"                    ],\r",
+							"                    \"additionalItems\": true,\r",
+							"                    \"items\": {\r",
+							"                        \"$id\": \"#/properties/family/properties/children/items\",\r",
+							"                        \"anyOf\": [\r",
+							"                            {\r",
+							"                                \"$id\": \"#/properties/family/properties/children/items/anyOf/0\",\r",
+							"                                \"type\": \"array\",\r",
+							"                                \"title\": \"The first anyOf schema\",\r",
+							"                                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                \"default\": [],\r",
+							"                                \"examples\": [\r",
+							"                                    [\r",
+							"                                        \"Alex\",\r",
+							"                                        24\r",
+							"                                    ]\r",
+							"                                ],\r",
+							"                                \"additionalItems\": true,\r",
+							"                                \"items\": {\r",
+							"                                    \"$id\": \"#/properties/family/properties/children/items/anyOf/0/items\",\r",
+							"                                    \"anyOf\": [\r",
+							"                                        {\r",
+							"                                            \"$id\": \"#/properties/family/properties/children/items/anyOf/0/items/anyOf/0\",\r",
+							"                                            \"type\": \"string\",\r",
+							"                                            \"title\": \"The first anyOf schema\",\r",
+							"                                            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                            \"default\": \"\",\r",
+							"                                            \"examples\": [\r",
+							"                                                \"Alex\"\r",
+							"                                            ]\r",
+							"                                        },\r",
+							"                                        {\r",
+							"                                            \"$id\": \"#/properties/family/properties/children/items/anyOf/0/items/anyOf/1\",\r",
+							"                                            \"type\": \"integer\",\r",
+							"                                            \"title\": \"The second anyOf schema\",\r",
+							"                                            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                            \"default\": 0,\r",
+							"                                            \"examples\": [\r",
+							"                                                24\r",
+							"                                            ]\r",
+							"                                        }\r",
+							"                                    ]\r",
+							"                                }\r",
+							"                            },\r",
+							"                            {\r",
+							"                                \"$id\": \"#/properties/family/properties/children/items/anyOf/1\",\r",
+							"                                \"type\": \"array\",\r",
+							"                                \"title\": \"The second anyOf schema\",\r",
+							"                                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                \"default\": [],\r",
+							"                                \"examples\": [\r",
+							"                                    [\r",
+							"                                        \"Kate\",\r",
+							"                                        12\r",
+							"                                    ]\r",
+							"                                ],\r",
+							"                                \"additionalItems\": true,\r",
+							"                                \"items\": {\r",
+							"                                    \"$id\": \"#/properties/family/properties/children/items/anyOf/1/items\",\r",
+							"                                    \"anyOf\": [\r",
+							"                                        {\r",
+							"                                            \"$id\": \"#/properties/family/properties/children/items/anyOf/1/items/anyOf/0\",\r",
+							"                                            \"type\": \"string\",\r",
+							"                                            \"title\": \"The first anyOf schema\",\r",
+							"                                            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                            \"default\": \"\",\r",
+							"                                            \"examples\": [\r",
+							"                                                \"Kate\"\r",
+							"                                            ]\r",
+							"                                        },\r",
+							"                                        {\r",
+							"                                            \"$id\": \"#/properties/family/properties/children/items/anyOf/1/items/anyOf/1\",\r",
+							"                                            \"type\": \"integer\",\r",
+							"                                            \"title\": \"The second anyOf schema\",\r",
+							"                                            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                            \"default\": 0,\r",
+							"                                            \"examples\": [\r",
+							"                                                12\r",
+							"                                            ]\r",
+							"                                        }\r",
+							"                                    ]\r",
+							"                                }\r",
+							"                            }\r",
+							"                        ]\r",
+							"                    }\r",
+							"                },\r",
+							"                \"u_salary_1_5_year\": {\r",
+							"                    \"$id\": \"#/properties/family/properties/u_salary_1_5_year\",\r",
+							"                    \"type\": \"integer\",\r",
+							"                    \"title\": \"The u_salary_1_5_year schema\",\r",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                    \"default\": 0,\r",
+							"                    \"examples\": [\r",
+							"                        8000\r",
+							"                    ]\r",
+							"                }\r",
+							"            },\r",
+							"            \"additionalProperties\": true\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"            \"$id\": \"#/properties/name\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The name schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Stas\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"salary\": {\r",
+							"            \"$id\": \"#/properties/salary\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The salary schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                2000\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"};\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"// 3) Проверить что занчение поля name = значению переменной name из окружения\r",
+							"\r",
+							"let name_fd = request.data.name;\r",
+							"let name_env = jsonData.name\r",
+							"//console.log(name_env);\r",
+							"\r",
+							"pm.test(\"Check name_fd = name_env\", function () {\r",
+							"    pm.expect(name_fd).to.eql(name_env)\r",
+							"});\r",
+							"\r",
+							"// 4) Проверить что занчение поля age в ответе соответсвует отправленному в запросе значению поля age\r",
+							"\r",
+							"let age_response = jsonData.age;\r",
+							"// console.log(age_response);\r",
+							"let age_request = request.data.age;\r",
+							"// console.log(age_request);\r",
+							"\r",
+							"pm.test(\"Check age_request = age_response\", function () {\r",
+							"    pm.expect(age_request).to.eql(age_response)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"times": [
-				145,
-				139,
-				142,
-				250,
-				157,
-				145,
-				140,
-				140,
-				144,
-				144,
-				139,
-				137,
-				133,
-				139,
-				143,
-				137,
-				138,
-				136,
-				133,
-				147,
-				136,
-				139,
-				137,
-				141,
-				133,
-				134,
-				148,
-				144,
-				132,
-				135
 			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{u_salary_1_5_year}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
 				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
-				},
-				{
-					"Status code is 200": true,
-					"Schema is valid": true,
-					"Check name_fd = name_env": true,
-					"Check age_request = age_response": true
+				"url": {
+					"raw": "{{url}}get_test_user",
+					"host": [
+						"{{url}}get_test_user"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"id": "ebfe5831-11da-4f83-94a8-26de2b3ccee4",
 			"name": "Currency",
-			"time": 828,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				502,
-				656,
-				686,
-				802,
-				666,
-				642,
-				764,
-				707,
-				636,
-				617,
-				641,
-				648,
-				621,
-				614,
-				627,
-				839,
-				633,
-				705,
-				666,
-				616,
-				668,
-				645,
-				594,
-				808,
-				847,
-				984,
-				929,
-				909,
-				697,
-				828
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"let randInt = jsonData.length;\r",
+							"function getRandomInt(randInt) {\r",
+							"  return Math.floor(Math.random() * randInt);\r",
+							"};\r",
+							"\r",
+							"curr_code = jsonData[getRandomInt(randInt)];\r",
+							"\r",
+							"pm.environment.set('curr_code', curr_code.Cur_ID);\r",
+							"console.log(curr_code.Cur_ID);"
+						],
+						"type": "text/javascript"
+					}
+				}
 			],
-			"allTests": [
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{}
-			]
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}currency",
+					"host": [
+						"{{url}}currency"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "f0b5b81f-e282-476f-8f4a-5f67b87a5c18",
 			"name": "Curr_byn",
-			"time": 675,
-			"responseCode": {
-				"code": 500,
-				"name": "INTERNAL SERVER ERROR"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				604,
-				345,
-				653,
-				724,
-				666,
-				576,
-				668,
-				603,
-				713,
-				621,
-				597,
-				363,
-				809,
-				393,
-				386,
-				609,
-				703,
-				644,
-				677,
-				354,
-				380,
-				561,
-				856,
-				900,
-				441,
-				668,
-				767,
-				776,
-				725,
-				675
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.get('curr_code', curr_code.cur);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"// pm.environment.set(\"curr_code\", jsonData[anyObj].Cur_ID);"
+						],
+						"type": "text/javascript"
+					}
+				}
 			],
-			"allTests": [
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{}
-			]
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "{{curr_code}}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}curr_byn",
+					"host": [
+						"{{url}}curr_byn"
+					]
+				}
+			},
+			"response": []
 		}
 	],
-	"count": 30,
-	"totalTime": 61104,
-	"collection": {
-		"requests": [
-			{
-				"id": "a121bc7a-8fff-44aa-ae66-3a8eff363573",
-				"method": "POST"
-			},
-			{
-				"id": "3f782605-5e57-49ca-8874-111f31e7a511",
-				"method": "POST"
-			},
-			{
-				"id": "f10584d9-43be-414c-83dc-58dfab873118",
-				"method": "POST"
-			},
-			{
-				"id": "e6a7a5be-49f2-4c2f-b00b-92c2cbfedbcb",
-				"method": "POST"
-			},
-			{
-				"id": "ef0c4a90-e1a8-4fe4-ad95-b0e5babf7f62",
-				"method": "POST"
-			},
-			{
-				"id": "ebfe5831-11da-4f83-94a8-26de2b3ccee4",
-				"method": "POST"
-			},
-			{
-				"id": "f0b5b81f-e282-476f-8f4a-5f67b87a5c18",
-				"method": "POST"
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
 			}
-		]
-	}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "age",
+			"value": ""
+		},
+		{
+			"key": "salary",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "weight",
+			"value": ""
+		},
+		{
+			"value": ""
+		},
+		{
+			"value": ""
+		}
+	]
 }
