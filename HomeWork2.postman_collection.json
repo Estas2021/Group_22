@@ -174,8 +174,9 @@
 							"\r",
 							"// 4) Достать значение из поля 'u_salary_1.5_year' и передать в поле salary запроса http://162.55.220.72:5005/get_test_user\r",
 							"pm.environment.set(\"u_salary_1_5_year\", response.person.u_salary_1_5_year)\r",
-							"\r",
-							""
+							"pm.environment.set(\"age\", response.person.u_name[2]);\r",
+							"pm.environment.set(\"salary\", response.person.u_name[1]);\r",
+							"pm.environment.set(\"name\", response.person.u_name[0]);"
 						],
 						"type": "text/javascript"
 					}
