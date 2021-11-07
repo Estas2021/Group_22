@@ -99,7 +99,7 @@ where es.employee_id not in(select employees.id from employees) and s.monthly_sa
 -- 5. Найти всех работников кому не начислена ЗП. не срабатывает почему-то
 select e.employee_name, s.monthly_salary from salary s
 left join employee_salary es on s.id = es.salary_id 
-right employees e on e.id = es.employee_id 
+right join employees e on e.id = es.employee_id 
 where e.id not in(select employee_salary.employee_id from employee_salary)
  
 --  6. Вывести всех работников с названиями их должности.
