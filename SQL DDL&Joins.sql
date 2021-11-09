@@ -1,3 +1,76 @@
+--1. Создать таблицу employees
+-- id. serial,  primary key,
+-- employee_name. Varchar(50), not null
+create table employees (
+	id serial primary key,
+	employee_name varchar(50) not null
+);
+
+select * from employees;
+
+--2. Наполнить таблицу employee 70 строками.
+insert into employees values (default, 'Jill');
+
+-- 3. Создать таблицу salary
+-- id. Serial  primary key,
+-- monthly_salary. Int, not null
+create table salary (
+	id serial primary key,
+	monthly_salary int not null
+);
+
+-- 4 . Наполнить таблицу salary 15 строками:
+insert into salary values (default, 2500);
+
+-- 5. Создать таблицу employee_salary
+-- id. Serial  primary key,
+-- employee_id. Int, not null, unique
+-- salary_id. Int, not null
+create table employee_salary (
+	id serial primary key,
+	employee_id int not null unique,
+	salary_id int not null
+);
+
+-- 6. Наполнить таблицу salary 40 строками:
+-- в 10 строк из 40 вставить несуществующие employee_id
+insert into employee_salary values (default, 69, 13);
+
+-- 7. Создать таблицу roles
+-- id. Serial  primary key,
+-- role_name. int, not null, unique
+create table roles (
+	id serial primary key,
+	role_name int not null unique
+);
+
+-- 8. Поменять тип столба role_name с int на varchar(30)
+alter table roles
+alter column role_name type varchar(30)
+
+-- 9. Наполнить таблицу roles 20 строками:
+insert into roles values (default, 'Senior Automation QA engineer');
+
+--10. Создать таблицу employee_salary
+-- id. Serial  primary key,
+-- employee_id. Int, not null, unique (внешний ключ для таблицы employees, поле id)
+-- role_id. Int, not null (внешний ключ для таблицы roles, поле id)
+create table roles_employee (
+	id serial primary key,
+	employee_id int not null unique,
+	role_id int not null,
+	foreign key (employee_id)
+		references employees (id),
+	foreign key (role_id)
+		references roles (id)
+);
+
+-- 11. Наполнить таблицу roles_employee 40 строками:
+insert into roles_employee values (default, 40, 7);
+
+select * from roles_employee;
+
+
 --SQL HomeWork 3. Joins
 
 -- 1. Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
@@ -12,11 +85,6 @@ join salary s on s.id = es.salary_id
 where monthly_salary < 2000
 
 -- 3. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.) 
-select e.employee_name, s.monthly_salary from salary s
-right join employee_salary es on s.id = es.salary_id 
-left join employees e on e.id = es.employee_id
-where e.employee_name is null
-
 select e.employee_name, s.monthly_salary from salary s
 full join employee_salary es on s.id = es.salary_id 
 full join employees e on e.id = es.employee_id
@@ -114,7 +182,7 @@ select e.employee_name, s.monthly_salary, r.role_name from employees e
 join roles_employee re on re.employee_id  = e.id 
 join roles r on r.id = re.role_id 
 join employee_salary es on es.employee_id  = e.id 
-inner join salary s on re.role_id  = s.id 
+join salary s on re.role_id  = s.id 
 where r.role_name like '%Junior Python developer%'
 
 --18. Вывести имена и зарплаты Middle JS разработчиков
@@ -139,19 +207,6 @@ join employee_salary es on s.id = es.salary_id
 join employees e on e.id = es.employee_id 
 join roles_employee re on e.id = re.employee_id 
 join roles r on re.role_id = r.id
-where r.role_name like '%Junior%QA%'
-
-select r.role_name, s.monthly_salary from roles r 
-join roles_employee re on r.id = re.role_id 
-join employees e on e.id = re.employee_id
-join employee_salary es on e.id = es.employee_id 
-join salary s on s.id = es.salary_id
-where r.role_name like '%Junior%QA%'
-
-select r.role_name, s.monthly_salary from employees e 
-join roles_employee re on e.id = re.role_id 
-join roles r on re.role_id = r.id 
-join salary s on r.id = s.id
 where r.role_name like '%Junior%QA%'
 
 --  21. Вывести среднюю зарплату всех Junior специалистов
@@ -214,13 +269,6 @@ where r.role_name like '%developer%'
 
 --  29. Вывести имена, должности и ЗП всех специалистов по возрастанию
 select e.employee_name, r.role_name, s.monthly_salary from employees e 
-full join roles_employee re on re.employee_id  = e.id 
-full join roles r on r.id = re.role_id 
-full join employee_salary es on es.employee_id  = e.id 
-inner join salary s on es.salary_id  = s.id 
-order by s.monthly_salary
-
-select e.employee_name, r.role_name, s.monthly_salary from employees e 
 join roles_employee re on re.employee_id  = e.id 
 join roles r on r.id = re.role_id 
 join employee_salary es on es.employee_id  = e.id 
@@ -229,13 +277,6 @@ order by s.monthly_salary
 
 --  30. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300
 select e.employee_name, r.role_name, s.monthly_salary from employees e 
-full join roles_employee re on re.employee_id  = e.id 
-full join roles r on r.id = re.role_id 
-full join employee_salary es on es.employee_id  = e.id 
-join salary s on es.salary_id  = s.id 
-where s.monthly_salary between 1700 and 2300 order by s.monthly_salary
-
-select e.employee_name, r.role_name, s.monthly_salary from employees e 
 join roles_employee re on re.employee_id  = e.id 
 join roles r on r.id = re.role_id 
 join employee_salary es on es.employee_id  = e.id 
@@ -243,13 +284,6 @@ join salary s on es.salary_id  = s.id
 where s.monthly_salary between 1700 and 2300 order by s.monthly_salary
 
 --  31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300
-select e.employee_name, r.role_name, s.monthly_salary from employees e 
-full join roles_employee re on re.employee_id  = e.id 
-full join roles r on r.id = re.role_id 
-full join employee_salary es on es.employee_id  = e.id 
-join salary s on es.salary_id  = s.id 
-where s.monthly_salary < 2300 order by s.monthly_salary
-
 select e.employee_name, r.role_name, s.monthly_salary from employees e 
 join roles_employee re on re.employee_id  = e.id 
 join roles r on r.id = re.role_id 
